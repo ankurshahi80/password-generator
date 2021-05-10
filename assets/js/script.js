@@ -18,16 +18,6 @@ var randomNumber = function(max) {
 var length = function() {
   // ask the user for a password length
   var passwordLength = window.prompt("Please enter the desired password length. Password must be between 8 to 128 characters long.");
-  
-  // check if the user canceled the prompt or left it empty
-  // if(!passwordLength) {
-  //   var cancelPassword = window.confirm("Would you like to cancel password generation? Click 'Ok' to cancel, 'Cancel' to continue.");
-    
-  //   // if yes (true), stop password generation
-  //   if (cancelPassword) {
-  //     return true;
-  //   }
-  // }
 
   // check if the prompt meets the password criteria 
   if( passwordLength<8 || passwordLength > 128){
@@ -45,13 +35,14 @@ var generateBtn = document.querySelector("#generate");
 var generatePassword = function() {
   //request password length
   var passLen = length();
-  
+
   //check password criteria:lowercase, uppercase, numbers and special characters
   var isLowerCase = window.confirm("Would you like to include lowercase characters? Click 'OK' for yes, 'Cancel' for no.");
   var isUpperCase = window.confirm("Would you like to include uppercase characters? Click 'OK' for yes, 'Cancel' for no.");
   var isNumeric = window.confirm("Would you like to include numeric characters? Click 'OK' for yes, 'Cancel' for no.");
   var isSpecialChar = window.confirm("Would you like to include special characters? Click 'OK' for yes, 'Cancel' for no.");
   
+
   // declare an array to store the selected password characters
   var passChars=[];
 
@@ -69,6 +60,12 @@ var generatePassword = function() {
     passChars=passChars.concat(spCharArray);
   }
   
+  // validate that atleast one character type is selected.
+  if (passChars.length === 0) {
+    var value = window.confirm ("At least one character type must be selected. Please try again.");
+    return generatePassword();
+  }
+
   // select random characters from the contatenated array to generate a unique password
   // loop through the password lenght
   for( var i=0; i< passLen; i++) {
