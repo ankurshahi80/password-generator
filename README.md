@@ -1,7 +1,7 @@
 # Password Generator
 
 ## Description
-This is Password Generator refactored code to include the following:
+This is Password Generator's refactored code to include the following:
  * prompts to request password length and character types
  * character types to include: uppercase, lowercase, numerical and special characters
  * validation to check that the user is requesting between 8 to 128 char long password and has specified at least on  char type
